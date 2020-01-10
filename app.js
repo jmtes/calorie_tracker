@@ -40,12 +40,12 @@ const ItemCtrl = (function () {
     logState: function () {
       return state;
     }
-  }
+  };
 })();
 
 // UI controller
 const UICtrl = (function () {
-  
+
 })();
 
 // App controller
