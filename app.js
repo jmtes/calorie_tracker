@@ -54,7 +54,7 @@ const UICtrl = (function () {
 
   // Public methods
   return {
-    populateItemList: function(items) {
+    populateItemList: function (items) {
       let html = '';
 
       items.forEach(function (item) {
@@ -69,7 +69,7 @@ const UICtrl = (function () {
       // Insert list items into UI
       document.querySelector(UISelectors.itemList).innerHTML = html;
     }
-  }
+  };
 })();
 
 // App controller
@@ -78,7 +78,7 @@ const App = (function (ItemCtrl, UICtrl) {
   return {
     init: function () {
       console.log('Initializing app');
-      
+
       // Fetch food items from state data
       const items = ItemCtrl.getItems();
 
