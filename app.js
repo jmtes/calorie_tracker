@@ -163,7 +163,7 @@ const App = (function (ItemCtrl, UICtrl) {
 
       // Fetch food items from state data
       const items = ItemCtrl.getItems();
-      
+
       // Check if there are any items
       if (!items.length) {
         UICtrl.hideList();
