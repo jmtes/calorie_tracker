@@ -13,21 +13,21 @@ const ItemCtrl = (function () {
   // This is supposed to give the feel of a React or Angular app with vanilla JS.
   const state = {
     items: [
-      {
-        id: 0,
-        name: 'Gyoza',
-        calories: 300
-      },
-      {
-        id: 1,
-        name: 'Waffles',
-        calories: 240
-      },
-      {
-        id: 3,
-        name: 'Teriyaki Chicken',
-        calories: 530
-      }
+      // {
+      //   id: 0,
+      //   name: 'Gyoza',
+      //   calories: 300
+      // },
+      // {
+      //   id: 1,
+      //   name: 'Waffles',
+      //   calories: 240
+      // },
+      // {
+      //   id: 3,
+      //   name: 'Teriyaki Chicken',
+      //   calories: 530
+      // }
     ],
     currentItem: null, // When we click the update icon in a list item, we're going to want that particular item to be the current item so we can put it in the form to be updated.
     totalCalories: 0
@@ -99,6 +99,25 @@ const UICtrl = (function () {
         calories: document.querySelector(UISelectors.itemCaloriesInput).value
       };
     },
+    addListItem: function (item) {
+      // Show the list
+      document.querySelector(UISelectors.itemList).style.display = 'block';
+      // Create li element
+      document.querySelector(UISelectors.itemList).innerHTML += `
+        <li class="collection-item" id="item-${item.id}">
+          <strong>${item.name}:</strong>
+          <em>${item.calories} Calories</em>
+          <a href="#" class="secondary-content"><i class="edit-item fa fa-pencil"></i></a>
+        </li>
+      `;
+    },
+    clearInput: function () {
+      document.querySelector(UISelectors.itemNameInput).value = '';
+      document.querySelector(UISelectors.itemCaloriesInput).value = '';
+    },
+    hideList: function () {
+      document.querySelector(UISelectors.itemList).style.display = 'none';
+    },
     getSelectors: function () {
       return UISelectors;
     }
@@ -120,10 +139,16 @@ const App = (function (ItemCtrl, UICtrl) {
   const itemAddSubmit = function (event) {
     // Get form input from UI controller
     const input = UICtrl.getItemInput();
-    
+
     // Check for name and calorie input
     if (input.name && input.calories) {
       const newItem = ItemCtrl.addItem(input.name, input.calories);
+
+      // Add item to UI list
+      UICtrl.addListItem(newItem);
+
+      // Clear input fields
+      UICtrl.clearInput();
     } else {
       console.log('Invalid inputs');
     }
@@ -138,9 +163,14 @@ const App = (function (ItemCtrl, UICtrl) {
 
       // Fetch food items from state data
       const items = ItemCtrl.getItems();
-
-      // Populate list with items
-      UICtrl.populateItemList(items);
+      
+      // Check if there are any items
+      if (!items.length) {
+        UICtrl.hideList();
+      } else {
+        // Populate list with items
+        UICtrl.populateItemList(items);
+      }
 
       // Load event listeners
       loadEventListeners();
