@@ -48,6 +48,14 @@ const UICtrl = (function () {
 })();
 
 // App controller
-const AppCtrl = (function (ItemCtrl, UICtrl) {
-  
+const App = (function (ItemCtrl, UICtrl) {
+  // Public attributes
+  return {
+    init: function () {
+      console.log('Initializing app');
+    }
+  };
 })(ItemCtrl, UICtrl);
+
+// Init app
+App.init();
