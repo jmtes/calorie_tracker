@@ -35,6 +35,7 @@ const ItemCtrl = (function () {
 
   // Remember that the above attributes are private! They cannot be accessed outside of this function.
 
+  // Public attributes
   return {
     logState: function () {
       return state;
