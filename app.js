@@ -39,13 +39,37 @@ const ItemCtrl = (function () {
   return {
     logState: function () {
       return state;
+    },
+    getItems: function () {
+      return state.items;
     }
   };
 })();
 
 // UI controller
 const UICtrl = (function () {
+  const UISelectors = {
+    itemList: '#item-list'
+  };
 
+  // Public methods
+  return {
+    populateItemList: function(items) {
+      let html = '';
+
+      items.forEach(function (item) {
+        html += `
+          <li class="collection-item" id="item-${item.id}">
+            <strong>${item.name}:</strong>
+            <em>${item.calories} Calories</em>
+            <a href="#" class="secondary-content"><i class="edit-item fa fa-pencil"></i></a>
+          </li>
+        `;
+      });
+      // Insert list items into UI
+      document.querySelector(UISelectors.itemList).innerHTML = html;
+    }
+  }
 })();
 
 // App controller
@@ -54,6 +78,12 @@ const App = (function (ItemCtrl, UICtrl) {
   return {
     init: function () {
       console.log('Initializing app');
+      
+      // Fetch food items from state data
+      const items = ItemCtrl.getItems();
+
+      // Populate list with items
+      UICtrl.populateItemList(items);
     }
   };
 })(ItemCtrl, UICtrl);
