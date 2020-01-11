@@ -353,8 +353,14 @@ const App = (function (ItemCtrl, UICtrl) {
     // Delete all items from state data
     ItemCtrl.clearAllItems();
 
+    // Get total calories
+    const totalCalories = ItemCtrl.getTotalCalories();
+    // Render total calories to UI
+    UICtrl.showTotalCalories(totalCalories);
+
     // Remove from UI
     UICtrl.removeItems();
+    UICtrl.hideList();
   };
 
   // Public attributes
