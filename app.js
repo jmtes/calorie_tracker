@@ -242,7 +242,7 @@ const App = (function (ItemCtrl, UICtrl) {
     // Update item event
     document.querySelector(UISelectors.updateBtn).addEventListener('click', itemUpdateSubmit);
 
-    // Update item event
+    // Delete item event
     document.querySelector(UISelectors.deleteBtn).addEventListener('click', itemDeleteSubmit);
 
     // Back button event
