@@ -245,6 +245,9 @@ const App = (function (ItemCtrl, UICtrl) {
     // Delete item event
     document.querySelector(UISelectors.deleteBtn).addEventListener('click', itemDeleteSubmit);
 
+    // Clear items event
+    document.querySelector(UISelectors.clearBtn).addEventListener('click', clearAllClick);
+
     // Back button event
     document.querySelector(UISelectors.backBtn).addEventListener('click', UICtrl.clearEditState);
   };
