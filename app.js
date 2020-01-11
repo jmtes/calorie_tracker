@@ -196,6 +196,13 @@ const UICtrl = (function () {
       document.querySelector(UISelectors.itemCaloriesInput).value = ItemCtrl.getCurrentItem().calories;
       UICtrl.showEditState();
     },
+    removeItems: function () {
+      const listItems = document.querySelectorAll(UISelectors.listItems);
+
+      listItems.forEach(function (item) {
+        item.remove();
+      });
+    },
     hideList: function () {
       document.querySelector(UISelectors.itemList).style.display = 'none';
     },
@@ -345,6 +352,9 @@ const App = (function (ItemCtrl, UICtrl) {
   const clearAllClick = function () {
     // Delete all items from state data
     ItemCtrl.clearAllItems();
+
+    // Remove from UI
+    UICtrl.removeItems();
   };
 
   // Public attributes
