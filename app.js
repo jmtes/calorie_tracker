@@ -14,6 +14,15 @@ const StorageCtrl = (function () {
         items.push(item);
         window.localStorage.setItem('items', JSON.stringify(items));
       }
+    },
+    getItemsFromStorage: function () {
+      let items;
+      if (window.localStorage.getItem('items') === null) {
+        items = [];
+      } else {
+        items = JSON.parse(window.localStorage.getItem('items'));
+      }
+      return items;
     }
   };
 })();
