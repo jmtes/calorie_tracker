@@ -83,6 +83,9 @@ const ItemCtrl = (function () {
       // Splice array
       state.items.splice(index, 1);
     },
+    clearAllItems: function () {
+      state.items = [];
+    },
     getItemById: function (id) {
       let found = null;
 
@@ -337,6 +340,11 @@ const App = (function (ItemCtrl, UICtrl) {
     UICtrl.clearEditState();
 
     event.preventDefault();
+  };
+
+  const clearAllClick = function () {
+    // Delete all items from state data
+    ItemCtrl.clearAllItems();
   };
 
   // Public attributes
