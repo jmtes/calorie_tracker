@@ -132,6 +132,9 @@ const UICtrl = (function () {
     showTotalCalories: function (totalCalories) {
       document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
     },
+    clearEditState: function () {
+      UICtrl.clearInput();
+    },
     getSelectors: function () {
       return UISelectors;
     }
