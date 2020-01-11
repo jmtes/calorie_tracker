@@ -1,4 +1,7 @@
 // Storage controller
+const StorageCtrl = (function () {
+  
+})();
 
 // Item controller
 const ItemCtrl = (function () {
