@@ -243,6 +243,12 @@ const App = (function (ItemCtrl, UICtrl) {
     event.preventDefault();
   };
 
+  // Update item submit
+  const itemUpdateSubmit = function (event) {
+    console.log('update');
+    event.preventDefault();
+  };
+
   // Public attributes
   return {
     init: function () {
