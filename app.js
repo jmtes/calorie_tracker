@@ -64,6 +64,13 @@ const ItemCtrl = (function () {
 
       return newItem;
     },
+    updateItem: function (name, calories) {
+      // Turn calories to a number
+      calories = parseInt(calories);
+      state.currentItem.name = name;
+      state.currentItem.calories = calories;
+      return state.currentItem;
+    },
     getItemById: function (id) {
       let found = null;
 
@@ -253,7 +260,12 @@ const App = (function (ItemCtrl, UICtrl) {
 
   // Update item submit
   const itemUpdateSubmit = function (event) {
-    console.log('update');
+    // Get input
+    const input = UICtrl.getItemInput();
+
+    // Update item
+    const updatedItem = ItemCtrl.updateItem(input.name, input.calories);
+
     event.preventDefault();
   };
 
