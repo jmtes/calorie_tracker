@@ -346,6 +346,11 @@ const App = (function (ItemCtrl, UICtrl) {
 
     UICtrl.clearEditState();
 
+    // Check if any items are left and if not, hide the ul
+    if (!ItemCtrl.getItems().length) {
+      UICtrl.hideList();
+    }
+
     event.preventDefault();
   };
 
