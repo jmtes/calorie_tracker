@@ -137,6 +137,10 @@ const UICtrl = (function () {
     },
     clearEditState: function () {
       UICtrl.clearInput();
+      document.querySelector(UISelectors.updateBtn).style.display = 'none';
+      document.querySelector(UISelectors.deleteBtn).style.display = 'none';
+      document.querySelector(UISelectors.backBtn).style.display = 'none';
+      document.querySelector(UISelectors.addBtn).style.display = 'inline';
     },
     getSelectors: function () {
       return UISelectors;
