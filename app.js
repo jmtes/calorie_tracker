@@ -106,6 +106,7 @@ const ItemCtrl = (function () {
 const UICtrl = (function () {
   const UISelectors = {
     itemList: '#item-list',
+    listItems: '#item-list li',
     addBtn: '.add-btn',
     updateBtn: '.update-btn',
     deleteBtn: '.delete-btn',
@@ -149,6 +150,21 @@ const UICtrl = (function () {
           <a href="#" class="secondary-content"><i class="edit-item fa fa-pencil"></i></a>
         </li>
       `;
+    },
+    updateListItem: function (item) {
+      const listItems = document.querySelectorAll(UISelectors.listItems);
+
+      listItems.forEach(function (listItem) {
+        const itemID = listItem.getAttribute('id');
+
+        if (itemID === `item-${item.id}`) {
+          listItem.innerHTML = `
+            <strong>${item.name}:</strong>
+            <em>${item.calories} Calories</em>
+            <a href="#" class="secondary-content"><i class="edit-item fa fa-pencil"></i></a>
+          `;
+        }
+      });
     },
     clearInput: function () {
       document.querySelector(UISelectors.itemNameInput).value = '';
@@ -263,8 +279,9 @@ const App = (function (ItemCtrl, UICtrl) {
     // Get input
     const input = UICtrl.getItemInput();
 
-    // Update item
+    // Update item and UI
     const updatedItem = ItemCtrl.updateItem(input.name, input.calories);
+    UICtrl.updateListItem(updatedItem);
 
     event.preventDefault();
   };
