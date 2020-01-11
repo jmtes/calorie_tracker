@@ -71,6 +71,18 @@ const ItemCtrl = (function () {
       state.currentItem.calories = calories;
       return state.currentItem;
     },
+    deleteItem: function (id) {
+      // Get ids
+      const ids = state.items.map(function (item) {
+        return item.id;
+      });
+
+      // Get index
+      const index = ids.indexOf(id);
+
+      // Splice array
+      state.items.splice(index, 1);
+    },
     getItemById: function (id) {
       let found = null;
 
@@ -295,6 +307,16 @@ const App = (function (ItemCtrl, UICtrl) {
     UICtrl.showTotalCalories(totalCalories);
 
     UICtrl.clearEditState();
+
+    event.preventDefault();
+  };
+
+  const itemDeleteSubmit = function (event) {
+    // Get current item
+    const currentItem = ItemCtrl.getCurrentItem();
+
+    // Delete from state data
+    ItemCtrl.deleteItem(currentItem.id);
 
     event.preventDefault();
   };
