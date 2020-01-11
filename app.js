@@ -232,7 +232,7 @@ const UICtrl = (function () {
 })();
 
 // App controller
-const App = (function (ItemCtrl, UICtrl) {
+const App = (function (ItemCtrl, UICtrl, StorageCtrl) {
   // Load event listeners
   const loadEventListeners = function () {
     // Get UI selectors
@@ -397,7 +397,7 @@ const App = (function (ItemCtrl, UICtrl) {
       loadEventListeners();
     }
   };
-})(ItemCtrl, UICtrl);
+})(ItemCtrl, UICtrl, StorageCtrl);
 
 // Init app
 App.init();
