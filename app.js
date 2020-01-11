@@ -43,6 +43,9 @@ const StorageCtrl = (function () {
         }
       });
       window.localStorage.setItem('items', JSON.stringify(items));
+    },
+    clearItemsFromStorage: function () {
+      window.localStorage.removeItem('items');
     }
   };
 })();
@@ -406,6 +409,9 @@ const App = (function (ItemCtrl, UICtrl, StorageCtrl) {
     // Remove from UI
     UICtrl.removeItems();
     UICtrl.hideList();
+
+    // Clear from local storage
+    StorageCtrl.clearItemsFromStorage();
   };
 
   // Public attributes
